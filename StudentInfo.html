@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<style>
+body{margin:0 auto;padding:0 auto;text-align:center;}
+table{margin:0 auto;text-align:center;font-size:30px;background:#97fb97;}
+</style>
+</head>
+<body>
+    <h1>Student Information</h1>
+	<table id="StudentInfo" border="1"/>
+		 <tr><th>Class</th><th>Number</th><th>Name</th><th>age</th><th>email</th></tr>
+    </table>
+<script>//这块是json的内容，也可以外部引用一个js文件来放数据，此处当所有数据均为字符串
+	var student = [
+		{"Class":"0801","Number":"001","Name":"张三","age":"19","email":"zs@tom.com"},
+		{"Class":"0802","Number":"002","Name":"李四","age":"19","email":"ls@tom.com"},
+		{"Class":"0803","Number":"003","Name":"李三","age":"19","email":"ss@tom.com"},
+	]
+</script>
+	
+<script>//一般js块都放在body尾部，可以试试放在head里
+	init();
+	function init(){
+		var string = "<tr><th>Class</th><th>Number</th><th>Name</th><th>age</th><th>email</th></tr>";
+		for(var i = 0; i < student.length; i++){//循环将html语句存入string里
+			string += "<tr><td>" + student[i].Class + "</td>";
+			string += "<td>" + student[i].Number + "</td>";
+			string += "<td>" + student[i].Name + "</td>";
+			string += "<td>" + student[i].age + "</td>";
+			string += "<td>" + student[i].email + "</td></tr>";
+		}
+		document.getElementById("StudentInfo").innerHTML = string;//将string的内容写到table里
+		//也可以不写入string直接写到table里，但是效率低
+	}
+
+</script>
+</body>
+
+</html>
